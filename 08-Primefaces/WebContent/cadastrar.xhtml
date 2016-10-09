@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="content">
+		<p:panel>
+			<h1>Cadastro de Prato</h1>
+			<h:form>
+				<p:panelGrid columns="2">
+					<p:outputLabel value="Nome" for="nome" />
+					<p:inputText value="#{pratoBean.prato.nome}" id="nome" />
+					
+					<p:outputLabel value="Valor" for="valor" />
+					<p:inputText value="#{pratoBean.prato.valor}" id="valor" />
+					
+					<p:outputLabel value="Foto" for="foto" />
+					<p:fileUpload 
+						fileUploadListener="#{pratoBean.subirFoto}"
+						sizeLimit="10000000"
+						allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+						id="foto" />
+					
+					<p:commandButton value="Salvar" actionListener="#{pratoBean.cadastrar}" />
+				</p:panelGrid>
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>
